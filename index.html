@@ -5,16 +5,22 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-    <div x-data="{ Title:$persist(''), Body:$persist(''), open:$persist(true) }">
-        <input type="text" x-model="Title" x-show="open"">
-        <h1 x-text="Title"></h1>
-        <input type="text" x-model="Body" x-show="open"">
-        <p x-text="Body"></p>
+    <div x-data="{ Title:$persist(''), Body:$persist(''), open:$persist(true) }" >
+        <textarea type="text" x-model="Title" x-show="open" id="Textarea"></textarea>
+        <h1 x-html="Title"></h1>
+        <textarea type="text" x-model="Body" x-show="open" id="Textarea"></textarea>
+        <p x-html="Body"></p>
         <button @click="open = ! open">Done</button>
     </div>
 </body>
 </html>
 
 <style>
-
+:root {
+    font-family: sans-serif;
+}
+#Textarea {
+    width: 50%;
+    height: 50%;
+}
 </style>
