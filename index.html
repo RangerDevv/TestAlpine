@@ -3,14 +3,19 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="./output.css">
 </head>
 <body>
-    <div x-data="{ Title:$persist(''), Body:$persist(''), open:$persist(true) }" >
-        <textarea type="text" x-model="Title" x-show="open" id="Textarea"></textarea>
-        <h1 x-html="Title"></h1>
-        <textarea type="text" x-model="Body" x-show="open" id="Textarea"></textarea>
-        <p x-html="Body"></p>
-        <button @click="open = ! open">Done</button>
+    <div x-data="{ Title:$persist(''), Body:$persist(''), open:$persist(true) }" id="main">
+        <div id="editArea">
+            <textarea type="text" x-model="Title" x-show="open" id="Textarea"></textarea>
+            <textarea type="text" x-model="Body" x-show="open" id="Textarea"></textarea>
+            <!-- <button @click="open = ! open" id="editBtn">Edit</button> -->
+        </div>
+        <div id="prevArea">
+            <h1 x-html="Title"></h1>
+            <p x-html="Body"></p>
+        </div>
     </div>
 </body>
 </html>
@@ -21,13 +26,47 @@
     background-color: beige;
 }
 #Textarea {
-    width: 50%;
+    width: 75%;
     height: 50%;
+    border: none;
 }
 button {
     width: auto;
     height: 40px;
     border-radius: 10px;
     outline: none;
+}
+#main {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+#editBtn {
+    width: 50px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    color: white;
+}
+
+#editArea {
+    padding-top: 30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    row-gap: 20px;
+    justify-content: center;
+}
+
+#prevArea {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    row-gap: 20px;
+    justify-content: center;
+}
 }
 </style>
